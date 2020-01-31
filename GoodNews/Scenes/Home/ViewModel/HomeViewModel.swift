@@ -13,29 +13,31 @@ protocol HomeViewModelProtocol{
     var numberOfSections: Int {get}
     func numberOfRowsInSection(_ index: Int) -> Int
     func articleAtIndex(_ index: Int) -> ArticleViewModel
-    func getArticles(url: URL)
+    func getArticles(completion: @escaping () -> Void)
     
     // TODO: Create binding
 }
 
-struct HomeViewModel{
-    private var articles: [Article]
+class HomeViewModel{
+    private var articles: [Article] = []
+    private let service: WebService
+    
+    init(service: WebService){
+        self.service = service
+    }
 }
 
 extension HomeViewModel{
-    init(_ articles: [Article]){
-        self.articles = articles
-    }
     
-    // Implementar injeção de dependencia, passando o service aqui
-//    init(){
-//
-//    }
 }
 
 extension HomeViewModel: HomeViewModelProtocol{
-    func getArticles(url: URL) {
-        // TODO: Fetch data from WebService
+    // TODO: Try to make this function a Pure function or an High Order Function
+    func getArticles(completion: @escaping () -> Void){
+        service.getArticles(url: URL(string: "https://newsapi.org/v2/top-headlines?country=us&apiKey=9eaedc9c57a04707b5cf1a9e4e87010f")!) { [weak self] (articles) in
+            self?.articles = articles
+            completion()
+        }
     }
     
     var numberOfSections: Int{

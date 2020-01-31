@@ -18,7 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         let window = UIWindow(frame: UIScreen.main.bounds)
-        let navigationController =  UINavigationController(rootViewController: HomeViewController())
+        let service = WebService()
+        let viewModel = HomeViewModel(service: service)
+        let navigationController =  UINavigationController(rootViewController: HomeViewController(viewModel: viewModel))
         
         navigationController.navigationBar.prefersLargeTitles = true
         
