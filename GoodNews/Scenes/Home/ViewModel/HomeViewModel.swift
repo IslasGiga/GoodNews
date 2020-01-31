@@ -36,7 +36,9 @@ extension HomeViewModel: HomeViewModelProtocol{
     func getArticles(completion: @escaping () -> Void){
         service.getArticles(url: URL(string: "https://newsapi.org/v2/top-headlines?country=us&apiKey=9eaedc9c57a04707b5cf1a9e4e87010f")!) { [weak self] (articles) in
             self?.articles = articles
-            completion()
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime(uptimeNanoseconds: 3000)) {
+                completion()
+            }
         }
     }
     

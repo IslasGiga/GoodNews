@@ -11,6 +11,26 @@ import SnapKit
 
 class HomeViewController: UITableViewController {
 
+    var loadingView: UIView = {
+        let view = UIView(frame: .zero)
+        let activityIndicator = UIActivityIndicatorView(frame: .zero)
+        if #available(iOS 13.0, *) {
+            activityIndicator.style = .large
+        } else {
+            activityIndicator.style = .gray
+        }
+        activityIndicator.color = .black
+        activityIndicator.startAnimating()
+        view.addSubview(activityIndicator)
+        
+        activityIndicator.snp.makeConstraints({
+            $0.center.equalToSuperview()
+            $0.size.equalTo(CGSize(width: 300, height: 300))
+        })
+
+        return view
+    }()
+    
     var viewModel: HomeViewModelProtocol
     
     init(viewModel: HomeViewModelProtocol){
@@ -22,19 +42,20 @@ class HomeViewController: UITableViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Good News - Home"
         tableView.tableFooterView = UIView()
         tableView.register(ArticleCell.self, forCellReuseIdentifier: "ArticleTableViewCell")
+        loadingView.frame = self.view.bounds
+        view.insertSubview(loadingView, aboveSubview: tableView)
         
         viewModel.getArticles(){
             DispatchQueue.main.async { [weak self] in
                 self?.tableView.reloadData()
+                self?.loadingView.removeFromSuperview()
             }
         }
-        
     }
 }
 
