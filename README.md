@@ -4,7 +4,7 @@ iOS app based on "MVVM Design Pattern using Swift on iOS" but using view code wi
 The app shows news from newsapi.org API.
 
 ## TODO:
-- ImplementInfinite scrolling;
+- Implement Infinite scrolling;
 - Use images thumbnails;
 - Add loading;
 - Create a screen for a single news;
