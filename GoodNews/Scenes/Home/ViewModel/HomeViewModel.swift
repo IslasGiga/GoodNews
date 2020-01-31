@@ -8,17 +8,17 @@
 
 import Foundation
 
-struct ArticleListViewModel{
+struct HomeViewModel{
     private let articles: [Article]
 }
 
-extension ArticleListViewModel{
+extension HomeViewModel{
     init(_ articles: [Article]){
         self.articles = articles
     }
 }
 
-extension ArticleListViewModel{
+extension HomeViewModel{
     var numberOfSections: Int{
         return 1
     }
