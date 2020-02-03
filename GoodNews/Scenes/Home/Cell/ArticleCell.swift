@@ -39,7 +39,7 @@ class ArticleCell: UITableViewCell{
         self.contentView.addSubview(descriptionLabel)
         
         titleLabel.snp.makeConstraints({
-            $0.top.equalToSuperview().offset(8)
+            $0.top.equalToSuperview().offset(16)
             $0.left.equalToSuperview().offset(16)
             $0.right.equalToSuperview().inset(16)
         })
@@ -48,7 +48,7 @@ class ArticleCell: UITableViewCell{
             $0.top.equalTo(titleLabel.snp.bottom).offset(8)
             $0.left.equalToSuperview().offset(16)
             $0.right.equalToSuperview().inset(16)
-            $0.bottom.equalToSuperview().inset(8)
+            $0.bottom.equalToSuperview().inset(16)
         })
     }
     

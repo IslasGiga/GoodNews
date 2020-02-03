@@ -117,6 +117,13 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		868D0C9E23E881EC00E9B62C /* Util */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		8695A73A23D9DCC5007825FA = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +144,7 @@
 		8695A74523D9DCC5007825FA /* GoodNews */ = {
 			isa = PBXGroup;
 			children = (
+				868D0C9E23E881EC00E9B62C /* Util */,
 				86382FC323E495CF004EECF2 /* Scenes */,
 				86281F7623DB2B50008BF443 /* Models */,
 				8682B37F23DA2A2400F504EB /* Service */,
